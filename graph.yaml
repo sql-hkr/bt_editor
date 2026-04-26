@@ -1,0 +1,307 @@
+nodes:
+- type: BT Root
+  label: Root
+  pos:
+  - -71
+  - 535
+  collapsed: false
+- type: Sequence
+  label: Root
+  pos:
+  - 184
+  - 685
+  collapsed: false
+- type: Condition (True)
+  label: Is Ready?
+  pos:
+  - 805
+  - 661
+  collapsed: false
+- type: Action (Success)
+  label: Do Task
+  pos:
+  - 634
+  - 514
+  collapsed: false
+- type: Image
+  label: Image
+  pos:
+  - 121
+  - 1049
+  collapsed: false
+  image_path: /Users/admin/Documents/python/bt_editor/img/image.png
+- type: OpenCV
+  label: OpenCV
+  pos:
+  - 361
+  - 1099
+  collapsed: false
+  op: Grayscale
+- type: Blackboard
+  label: Blackboard
+  pos:
+  - 309
+  - 876
+  collapsed: false
+  op: Read
+  bb_key: ''
+- type: Parallel
+  label: Parallel
+  pos:
+  - 40
+  - 540
+  collapsed: false
+- type: P2P
+  label: P2P
+  pos:
+  - 817
+  - 765
+  collapsed: false
+  params:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    rx: 0.0
+    ry: 0.0
+    rz: 0.0
+- type: Vector Transform
+  label: Vector Transform
+  pos:
+  - 537
+  - 821
+  collapsed: false
+  op: Translate
+  params:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+- type: Selector
+  label: Selector
+  pos:
+  - 384
+  - 198
+  collapsed: false
+- type: Sequence
+  label: Sequence
+  pos:
+  - 487
+  - 306
+  collapsed: false
+- type: Action (Success)
+  label: Action (Success)
+  pos:
+  - 500
+  - 158
+  collapsed: false
+- type: Action (Success)
+  label: Action (Success)
+  pos:
+  - 625
+  - 247
+  collapsed: false
+- type: Action (Success)
+  label: Action (Success)
+  pos:
+  - 639
+  - 366
+  collapsed: false
+- type: Math
+  label: Math
+  pos:
+  - 628
+  - 1072
+  collapsed: false
+  op: Add
+  params:
+    A: 0.0
+    B: 0.0
+- type: Vector Transform
+  label: Vector Transform
+  pos:
+  - 834
+  - 1058
+  collapsed: false
+  op: Translate
+  params:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+- type: P2P
+  label: P2P
+  pos:
+  - 1053
+  - 968
+  collapsed: false
+  params:
+    x: 0.0
+    y: -17.5
+    z: 0.0
+    rx: 0.0
+    ry: 0.0
+    rz: 0.0
+- type: Centroid
+  label: Centroid
+  pos:
+  - 145
+  - 1724
+  collapsed: false
+  params:
+    threshold: 127
+    invert: false
+- type: OpenCV
+  label: OpenCV
+  pos:
+  - 589
+  - 1383
+  collapsed: false
+  op: Threshold Binary
+- type: BlobDetector
+  label: BlobDetector
+  pos:
+  - 436
+  - 1547
+  collapsed: false
+  params:
+    min_thresh: 69
+    max_thresh: 94
+    min_area: 2051.0
+- type: ContourAnalysis
+  label: ContourAnalysis
+  pos:
+  - 1016
+  - 1210
+  collapsed: false
+  params:
+    threshold: 122
+- type: CornerDetector
+  label: CornerDetector
+  pos:
+  - 234
+  - 1364
+  collapsed: false
+  params:
+    max_corners: 212
+    quality: 0.0010000000474974513
+    min_dist: 24.0
+- type: ColorMask
+  label: ColorMask
+  pos:
+  - -100
+  - 1356
+  collapsed: false
+  params:
+    h_lo: 0
+    h_hi: 44
+    s_lo: 66
+    s_hi: 255
+    v_lo: 120
+    v_hi: 255
+- type: LineDetector
+  label: LineDetector
+  pos:
+  - 791
+  - 1310
+  collapsed: false
+  params:
+    rho: 3.5
+    threshold: 78
+    min_length: 30.0
+    max_gap: 7.0
+links:
+- from_node: 1
+  from_socket: out_attr
+  to_node: 2
+  to_socket: in_attr
+- from_node: 1
+  from_socket: out_attr
+  to_node: 3
+  to_socket: in_attr
+- from_node: 4
+  from_socket: img_out_attr
+  to_node: 5
+  to_socket: img_in_attr
+- from_node: 7
+  from_socket: out_attr
+  to_node: 1
+  to_socket: in_attr
+- from_node: 1
+  from_socket: out_attr
+  to_node: 8
+  to_socket: in_attr
+- from_node: 9
+  from_socket: data_out_attr
+  to_node: 8
+  to_socket: vec_attr
+- from_node: 6
+  from_socket: bb_out_attr
+  to_node: 9
+  to_socket: vt_in_attr
+- from_node: 1
+  from_socket: out_attr
+  to_node: 10
+  to_socket: in_attr
+- from_node: 10
+  from_socket: out_attr
+  to_node: 11
+  to_socket: in_attr
+- from_node: 10
+  from_socket: out_attr
+  to_node: 12
+  to_socket: in_attr
+- from_node: 11
+  from_socket: out_attr
+  to_node: 13
+  to_socket: in_attr
+- from_node: 11
+  from_socket: out_attr
+  to_node: 14
+  to_socket: in_attr
+- from_node: 5
+  from_socket: img_out_attr
+  to_node: 15
+  to_socket: math_in_attrs.A
+- from_node: 15
+  from_socket: data_out_attr
+  to_node: 16
+  to_socket: vt_in_attr
+- from_node: 16
+  from_socket: data_out_attr
+  to_node: 17
+  to_socket: vec_attr
+- from_node: 1
+  from_socket: out_attr
+  to_node: 17
+  to_socket: in_attr
+- from_node: 0
+  from_socket: out_attr
+  to_node: 7
+  to_socket: in_attr
+- from_node: 5
+  from_socket: img_out_attr
+  to_node: 19
+  to_socket: img_in_attr
+- from_node: 5
+  from_socket: img_out_attr
+  to_node: 20
+  to_socket: img_in_attr
+- from_node: 5
+  from_socket: img_out_attr
+  to_node: 21
+  to_socket: img_in_attr
+- from_node: 4
+  from_socket: img_out_attr
+  to_node: 23
+  to_socket: img_in_attr
+- from_node: 4
+  from_socket: img_out_attr
+  to_node: 22
+  to_socket: img_in_attr
+- from_node: 4
+  from_socket: img_out_attr
+  to_node: 24
+  to_socket: img_in_attr
+- from_node: 23
+  from_socket: img_out_attr
+  to_node: 18
+  to_socket: img_in_attr
+blackboard: {}
