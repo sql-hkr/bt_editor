@@ -1,0 +1,47 @@
+bt_editor
+=========
+
+Behaviour Tree visual editor built on Dear PyGui.
+
+Features
+--------
+* Node-based editor: connect Composites, Decorators, and Behaviour nodes via
+  drag-and-drop links
+* Built-in node library:
+    * Composites: Sequence, Selector, Parallel
+    * Decorators: Inverter, ForceSuccess/Failure, Repeat, RetryUntilSuccess,
+      Timeout, SuccessIsRunning
+    * Behaviours: auto-discovered plugins (P2P, SimpleAction, VisualServo, …)
+    * Utilities: Value, Vector, Math, VectorTransform, Blackboard
+    * Robotics: HTMatrix, RPY<->HTM, PoseCompose/Inverse/Error, JointState,
+      ScalarToVector, VectorSplit, Gain, Dot/CrossProduct
+    * Vision: BlobDetector, ContourAnalysis, ColorMask, CornerDetector,
+      TemplateMatch, LineDetector, Centroid
+    * Input: Image source node
+* Blackboard editor: define and inspect shared key-value entries at runtime
+* YAML save / load (preserves node positions, links, and blackboard)
+* JSON export for use with external BT executors
+* Context menu, clipboard (copy/paste sub-trees), demo graph loader
+* Debug overlay with real-time node-status highlighting
+
+Requirements
+------------
+* Python >= 3.13
+* dearpygui >= 2.2
+* opencv-python >= 4.13
+* py-trees >= 2.4
+* pyyaml >= 6.0
+* psutil >= 7.2
+* rich >= 15.0
+
+Usage
+-----
+    uv run main.py
+
+or, with the virtualenv activated:
+
+    python main.py
+
+License
+-------
+GNU General Public License v3.0 or later -- see LICENSE

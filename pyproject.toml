@@ -2,7 +2,7 @@
 name = "bt_editor"
 version = "0.1.0"
 description = "Add your description here"
-readme = "README.md"
+readme = "README"
 requires-python = ">=3.13"
 dependencies = [
     "dearpygui>=2.2",
